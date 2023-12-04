@@ -2,7 +2,7 @@
 
 count = 30
 
-// let timer = setInterval(countDown, 1000);
+let timer = setInterval(countDown, 1000);
 
 function countDown() {
     if (count == -1) {
@@ -29,3 +29,17 @@ function calculateTimePrecise() {
 }
 
 calculateTimePrecise();
+
+
+// Create a terminal clock(HH:MM:SS)
+
+function clock() {
+    const time = new Date();
+    const hours = time.getHours()
+    const minutes = time.getMinutes()
+    const seconds = time.getSeconds()
+    console.log(`${hours}:${minutes}:${seconds}`)
+}
+
+// Run the clock function every 1 sec   
+setInterval(clock, 1000)
