@@ -66,7 +66,6 @@ app.get("/todos/:id", function (req, res) {
 
 app.post("/todos", function (req, res) {
   const newTodoItem = {
-    // keeping id as index of todo item
     id: Math.floor(Math.random() * 1000000), // unique random id
     title: req.body.title,
     description: req.body.description
@@ -76,7 +75,6 @@ app.post("/todos", function (req, res) {
 });
 
 app.put("/todos/:id", function (req, res) {
-  // as id is same as index of todo item
   const todoIndex = todos.findIndex(t => t.id === parseInt(req.params.id));
   if (todoIndex != -1) {
     todos[todoIndex].title = req.body.title;
