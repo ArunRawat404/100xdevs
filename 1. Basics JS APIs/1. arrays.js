@@ -53,3 +53,44 @@ function forEachExample(arr) {
 }
 
 forEachExample([1, 2, 3]);
+
+// arrow function
+const sum = (a, b) => {
+    console.log("Inside an arrow function");
+    return a + b;
+}
+
+console.log(sum(1, 2));
+
+// map()
+// given an input array, give me back a new array in which every value is multiplied by 2. [1, 2, 3, 4, 5] -> [2, 4, 6, 8, 10]
+
+const array = [1, 2, 3, 4, 5];
+
+const newArray = array.map((item) => item * 2);
+console.log(array, "After every value multiplied by 2 :", newArray);
+
+
+// filter 
+// given an input array, give me back all the even values from it, [1, 2, 3, 4, 5] -> [2, 4]
+
+const evenArray = array.filter((item) => item % 2 == 0);
+console.log(array, "After filtering out even values :", evenArray);
+
+
+// Create a custom map function that takes 2 inputs an array, and a transformation callback/function and transform the array into a new one using the transformation function.
+
+function mapCustom(array, transform) {
+    let transformArray = [];
+    for (let i = 0; i < array.length; i++) {
+        transformArray.push(transform(array[i]));
+    }
+    return transformArray;
+}
+
+function squareFunction(num) {
+    return num * num;
+}
+
+const transformArray = mapCustom([1, 2, 3, 4, 5], squareFunction);
+console.log("After squaring each element", transformArray);
