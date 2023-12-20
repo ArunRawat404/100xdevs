@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+
+<body>
+    <script>
+        // using promise syntax
+        function getAnimalDatePromise() {
+            // get request to given url using fetch api
+            fetch("https://fakerapi.it/api/v1/persons")
+                .then(function (response) {
+                    response.json()
+                        .then(function (finalData) {
+                            console.log(finalData);
+                        });
+                });
+        };
+
+        // using async await syntax
+        async function getAnimalDateAsync() {
+            const response = await fetch("https://fakerapi.it/api/v1/persons");
+            const finalData = await response.json();
+            renderData(finalData);
+
+            // show raw data in frontend
+            // document.getElementById("userData").innerHTML = JSON.stringify(finalData.data);
+        }
+
+        // rendering data on frontend
+        function renderData(finalData) {
+            // get data array from the finalData object
+            dataArray = finalData["data"];
+            const userDataDiv = document.getElementById("userData");
+            dataArray.forEach(data => {
+                const userDiv = document.createElement("div");
+                userDiv.innerHTML = `<h2>${data.firstname} ${data.lastname}</h2>
+                    <p><strong>Email:</strong> ${data.email}</p>
+                    <p><strong>Phone:</strong> ${data.phone}</p>
+                    <p><strong>Birthday:</strong> ${data.birthday}</p>
+                    <p><strong>Gender:</strong> ${data.gender}</p>
+                    <p><strong>Address:</strong> ${data.address.street}, ${data.address.city}, ${data.address.country}</p>
+                    <p><strong>Website:</strong> <a href="${data.website}" target="_blank">${data.website}</a></p>
+                    <hr>
+                `;
+                userDataDiv.appendChild(userDiv);
+            });
+        };
+    </script>
+
+    <button onclick="getAnimalDateAsync()"> Get Animal Data</button>
+
+    <div id="userData"></div>
+</body>
+
+</html>
