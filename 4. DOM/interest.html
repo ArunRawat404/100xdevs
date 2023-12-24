@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Modal</title>
+</head>
+
+<body>
+
+    <input type="text" placeholder="Principal Amount" id="principal">
+    <br>
+    <br>
+    <input type="text" placeholder="Rate of interest" id="rate">
+    <br>
+    <br>
+    <input type="text" placeholder="Time" id="time">
+    <br>
+    <br>
+    <button onclick="calculateInterest()">Calculate Interest</button>
+    <br>
+    <br>
+    <div id="finalInterest"></div>
+
+    <script>
+        const endpoint = "https://sum-server.100xdevs.com/interest"
+
+        async function calculateInterest() {
+            const principal = document.getElementById("principal").value;
+            const rate = document.getElementById("rate").value;
+            const time = document.getElementById("time").value;
+
+            const response = await fetch(endpoint + "?" + "principal=" + principal + "&rate=" + rate + "&time=" + time);
+            const interestObj = await response.json();
+
+            const finalInterest = document.getElementById("finalInterest");
+            finalInterest.innerText = "The interest will be " + interestObj.interest + " and total amount will be " + interestObj.total;
+        };
+    </script>
+</body>
+
+</html>
