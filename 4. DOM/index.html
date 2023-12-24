@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Modal</title>
+</head>
+
+<body>
+
+    <input type="text" placeholder="First number" id="firstNum">
+    <br>
+    <br>
+    <input type="text" placeholder="Second number" id="secondNum">
+    <br>
+    <br>
+    <button onclick="calculateSum()">Calculate sum</button>
+    <br>
+    <br>
+    <div id="finalSum"></div>
+
+    <script>
+        function calculateSum() {
+            const firstNum = document.getElementById("firstNum").value;
+            const secondNum = document.getElementById("secondNum").value;
+
+            const totalSum = parseInt(firstNum) + parseInt(secondNum);
+
+            if (!isNaN(totalSum)) {
+                const finalSum = document.getElementById("finalSum");
+                finalSum.innerText = "The sum of " + firstNum + ", " + secondNum + " is " + totalSum;
+            }
+        };
+    </script>
+</body>
+
+</html>
