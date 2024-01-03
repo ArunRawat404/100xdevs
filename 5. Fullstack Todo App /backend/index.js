@@ -2,7 +2,7 @@ const express = require("express");
 const { createTodoSchema, updateTodoSchema } = require("./types.js");
 
 const app = express();
-const PORT = 3000;
+const { PORT } = require("./config/server_config.js")
 
 app.use(express.json());
 
