@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { createTodoSchema, updateTodoSchema } = require("./types.js");
 
 const app = express();
@@ -7,6 +8,7 @@ const Todo = require("./models/todo_model.js");
 const connect = require("./config/db_config.js");
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/todos", async function (req, res) {
     try {
